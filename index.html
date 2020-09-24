@@ -12,92 +12,97 @@
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
-
 <body>
   <div id="container">
-  <div class="block" id="block1">
-    <div class="dropdown">
-    <h2>Exercises</h2>
-      <ul>
-        <li><a href="#">Exercise 1</a></li><br>
-        <li><a href="#">Exercise 2</a></li><br>
-        <li><a href="#">Exercise 3</a></li>
-      </ul>
+
+    <!-- blocks used to break down page into categories (4 total) -->
+    <!-- exercises block -->
+    <div class="block" id="exercises">
+      <div class="dropdown">
+        <h2>Exercises</h2>
+        <ul>
+          <li><a href="#">Exercise 1</a></li><br>
+          <li><a href="#">Exercise 2</a></li><br>
+          <li><a href="#">Exercise 3</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
 
-  <div class="block" id="block2">
-    <div class="dropdown">
-    <h2>Projects</h2>
-    <ul>
-      <li><a href="#">Proposal</a></li><br>
-      <li><a href="#">Prototype</a></li><br>
-      <li><a href="#">Prototype Documentation</a></li><br>
-      <li><a href="#">Final Project</a></li><br>
-      <li><a href="#">Final Project Documentation</a></li>
-    </ul>
-   </div>
-  </div>
-
-  <div class="block" id="block3">
-  <div class="dropdown">
-  <h2 class="fade-out">Reflections</h2>
-  <ul>
-    <li><a href="#">Reflection 1</a></li><br>
-    <li><a href="#">Reflection 2</a></li><br>
-    <li><a href="#">Reflection 3</a></li><br>
-    <li><a href="#">Reflection 4</a></li>
-  </ul>
-</div>
-</div>
-
-  <div class="block" id="block4">
-    <div class="dropdown">
-  <h2>Presentations</h2>
-  <ul>
-    <li><a href="#">Presentation Slides</a></li><br>
-    <li><a href="#">Presentation Documentation</a></li>
-  </ul>
-</div>
-</div>
-
-  <div class="title">
-    <span class="c">C</span>
-    <span class="a">A</span>
-    <span class="r">R</span>
-    <span class="t">T</span>
-    <span class="three">3</span>
-    <span class="five">5</span>
-    <span class="one">1</span>
-  </div>
-
-  <div class="name">
-    <span class="a">A</span>
-    <span class="dot">.</span>
-    <span class="c">C</span>
-    <span class="l">L</span>
-    <span class="e">E</span>
-    <span class="m">M</span>
-    <span class="e2">E</span>
-    <span class="n">N</span>
-    <span class="t">T</span>
-  </div>
-
-  <div id="center">
-
-  <!-- modified the following tutorial code to create eye with blink effect: -->
-  <!-- https://www.youtube.com/watch?v=9Yk_bR0cFOc -->
-  <div class="eye">
-
-    <div class="shut">
-      <span></span>
+    <!-- projects block -->
+    <div class="block" id="projects">
+      <div class="dropdown">
+        <h2>Projects</h2>
+        <ul>
+          <li><a href="#">Proposal</a></li><br>
+          <li><a href="#">Prototype</a></li><br>
+          <li><a href="#">Prototype Documentation</a></li><br>
+          <li><a href="#">Final Project</a></li><br>
+          <li><a href="#">Final Project Documentation</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="ball">
+
+    <!-- reflections block -->
+    <div class="block" id="reflections">
+      <div class="dropdown">
+        <h2>Reflections</h2>
+        <ul>
+          <li><a href="#">Reflection 1</a></li><br>
+          <li><a href="#">Reflection 2</a></li><br>
+          <li><a href="#">Reflection 3</a></li><br>
+          <li><a href="#">Reflection 4</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-  </div>
-</div>
+
+    <!-- presentations block -->
+    <div class="block" id="presentations">
+      <div class="dropdown">
+        <h2>Presentations</h2>
+        <ul>
+          <li><a href="https://drive.google.com/drive/folders/1Of0Rm7Of4-PpXv-M7ghMEZ3P7NDP3DeI?fbclid=IwAR0sRIgbTdKCGiI5WsA2uRI4zqbQJIqDfrg9m3PCQUjIEhio2QGY914zw0U" target="_blank">Presentation 1</a></li><br>
+          <li><a href="#">Presentation 2</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- title letters contained within individual spans to place them in arc through CSS -->
+    <!-- there are better ways of doing this in javascript but since the word is short, I try it through CSS instead -->
+    <div class="title">
+      <span class="c">C</span>
+      <span class="a">A</span>
+      <span class="r">R</span>
+      <span class="t">T</span>
+      <span class="three">3</span>
+      <span class="five">5</span>
+      <span class="one">1</span>
+    </div>
+
+    <!-- same idea goes for my name -->
+    <div class="name">
+      <span class="a">A</span>
+      <span class="dot">.</span>
+      <span class="c">C</span>
+      <span class="l">L</span>
+      <span class="e">E</span>
+      <span class="m">M</span>
+      <span class="e2">E</span>
+      <span class="n">N</span>
+      <span class="t">T</span>
+    </div>
+
+    <!-- give this div id of center since it will be used to center some content (the eye specifically) -->
+    <div id="center">
+      <!-- modified the following tutorial code to create eye with blink effect: https://www.youtube.com/watch?v=9Yk_bR0cFOc -->
+      <div class="eye">
+        <div class="shut">
+          <span></span>
+        </div>
+        <div class="eyeball">
+        </div>
+      </div>
+    </div><!-- closing center -->
+
+  </div> <!-- closing container -->
 </body>
-
-
 </html>

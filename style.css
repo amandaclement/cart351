@@ -1,31 +1,103 @@
 body {
+  /* removing any default padding or margin on body */
   padding: 0;
   margin: 0;
-  /* image source: https://www.google.com/search?q=organic+lines+png&tbm=isch&ved=2ahUKEwjkyqnJ29zrAhWodd8KHSzQDngQ2-cCegQIABAA&oq=organic+lines+png&gs_lcp=CgNpbWcQAzICCAA6BAgAEEM6BggAEAgQHlCvClisDWD1DWgAcAB4AIABXYgBgwKSAQEzmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=kCBZX-TCNKjr_QasoLvABw&bih=798&biw=1061#imgrc=ELqfgWHupY1KWM */
-  background-image: url('images/lines.png');
-  background-size: auto;
-  background-color: #ece1d0;
+  background-color: #ece1d0; /* light grey */
   font-family: 'Roboto Mono', monospace;
   height: 100%;
 }
 
 .block {
+  /* page is composed of 4 blocks (one for each category) which will each cover a quarter of page */
   position: fixed;
   width: 50%;
   height: 50%;
-  background-color: #0b7590;
 }
 
-.block a {
-  color: #ece1d0;
+/* exercises block in top left corner */
+#exercises {
+  top: 0;
+  left: 0;
+  background-color: #f55a5a; /* pink */
+  background-image: url('images/linesPink.png');
+  background-position: left;
+}
+
+#exercises h2 {
+  color: #1c395d; /* navy blue */
+}
+
+/* projects block in top right corner */
+#projects {
+  top: 0;
+  left: 50%;
+  background-color: #1c395d; /* navy blue */
+  background-image: url('images/linesNavy.png');
+  background-position: bottom;
+}
+
+#projects h2 {
+  color: #ffa200; /* mustard yellow */
+}
+
+/* reflections block in bottom left corner */
+#reflections {
+  top: 50%;
+  left: 0;
+  background-color: #0b7590; /* blue */
+  background-image: url('images/linesBlue.png');
+  background-position: center;
+}
+
+#reflections h2 {
+  color: #f55a5a;
+  /* pink */
+}
+
+/* presentations block in bottom right corner */
+#presentations {
+  top: 50%;
+  left: 50%;
+  background-color: #ffa200; /* mustard yellow */
+  background-image: url('images/linesYellow.png');
+  background-position: top left;
+}
+
+#presentations h2 {
+  color: #0b7590; /* blue */
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown h2 {
+  font-size: 60px;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin-top: -10px;
+}
+
+.dropdown a {
+  color: #ece1d0; /* light grey */
   text-decoration: none;
 }
 
-.block a:hover {
+.dropdown a:hover {
   text-decoration: underline;
 }
 
-.block ul {
+.dropdown ul {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
   list-style-type: none;
   text-align: center;
   margin: 0 auto;
@@ -33,70 +105,24 @@ body {
   padding: 0;
 }
 
-#block1 {
-  top: 0;
-  left: 0;
-  background-color: #f55a5a;
-  background-image: url('images/lines.png');
-  background-position: left;
-}
-#block1 h2 {
-  color: #1c395d;
+.dropdown li {
+  /* hide list until user hovers to that block */
+  display: none;
+  z-index: 10;
 }
 
-#block2 {
-  top: 0;
-  left: 50%;
-  background-color: #1c395d;
-  background-image: url('images/linesNavy.png');
-  background-position: bottom;
-}
-#block2 h2 {
-  color: #ffa200;
+.dropdown:hover li {
+  /* display links when user hovers to that section */
+  display: block;
 }
 
-#block3 {
-  top: 50%;
-  left: 0;
-  background-color: #0b7590;
-  background-image: url('images/linesBlue.png');
-  background-position: center;
-}
-#block3 h2 {
-  color: #f55a5a;
+.dropdown:hover h2 {
+  /* and hide the h2 */
+  display: none;
 }
 
-#block4 {
-  top: 50%;
-  left: 50%;
-  background-color: #ffa200;
-  background-image: url('images/linesYellow.png');
-  background-position: top left;
-}
-#block4 h2 {
-  color: #0b7590;
-}
-
-/* h1 {
-  color: #FFF;
-  position: absolute;
-  top: 30%;
-  left: 24%;
-  transform: translate(-50%, -50%) rotate(45deg);
-} */
-
-#center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
-
-.exercises, .projects, .reflections, .presentations {
-  color: #FFF;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  font-size: 21px;
+#exercises .dropdown ul, #projects .dropdown ul {
+  margin-top: -20px;
 }
 
 .title, .name {
@@ -117,12 +143,7 @@ body {
   transform: translate(-50%, -190px);
 }
 
-.name {
-  font-size: 21px;
-  font-weight: 500;
-  transform: translate(-50%, 145px);
-}
-
+/* positioning each letter individually to create arc */
 .title .c {
   transform: translate(0px, 31px) rotate(-30deg);
 }
@@ -142,6 +163,12 @@ body {
   transform: translate(0px, 31px) rotate(30deg);
 }
 
+.name {
+  font-size: 21px;
+  font-weight: 500;
+  transform: translate(-50%, 145px);
+}
+
 .name .a {
   transform: translate(0px, -21px) rotate(20deg);
 }
@@ -152,10 +179,10 @@ body {
   transform: translate(0px, -6px) rotate(10deg);
 }
 .name .l {
-  transform: translate(0px, -2px) rotate(7deg);
+  transform: translate(0px, -1px) rotate(7deg);
 }
 .name .m {
-  transform: translate(0px, -2px) rotate(-7deg);
+  transform: translate(0px, -1px) rotate(-7deg);
 }
 .name .e2 {
   transform: translate(0px, -6px) rotate(-10deg);
@@ -167,7 +194,16 @@ body {
   transform: translate(0px, -21px) rotate(-20deg);
 }
 
+#center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* creating eye */
 .eye {
+  /* sclera */
   width: 300px;
   height: 300px;
   display: inline-block;
@@ -179,22 +215,24 @@ body {
   border: #000 solid 8px;
 }
 
-.ball {
+.eyeball {
+  /* pupil */
   width: 90px;
   height: 90px;
-  background: #25340F;
-  background: #000;
+  background: #000; /* black */
+  /* iris */
   border-radius: 50%;
-  border: 40px solid #329932;
+  border: 40px solid #329932; /* green */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
+/* styling for blink effect */
 .shut {
   width: 450px;
-  height: 300px;
+  height: 235px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -206,103 +244,29 @@ body {
   display: block;
   width: 100%;
   height: 0%;
-  background-color: #ece1d0;
+  background-color: #ece1d0; /* light grey */
   border-radius: 0 0 60% 60%;
   transition: 0.4s all;
 }
 
-#center:hover>.eye>.shut span{
+/* when user hovers over eye, make it close */
+/* this could also be done in javascript */
+.eye:hover>.shut span {
   height: 100%;
 }
 
-.dropdown h2 {
-  font-size: 60px;
-  margin: 0;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  margin-top: -10px;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-}
-
-.block li {
-  display: none;
-  z-index: 10;
-}
-
-.dropdown ul {
-  position: relative;
-  top: 50%;
-  transform: translate(0,-50%);
-  margin-top: -10px;
-}
-
-.dropdown:hover li {
-  display: block;
-}
-
-.dropdown:hover h2 {
-  /* display: none; */
-  /* -webkit-animation-fill-mode: both;animation-fill-mode: both; */
-}
-
-.block:hover h2 {
-  /* animation: fadeOut ease 1s;
-  -webkit-animation: fadeOut ease 1s;
-  -moz-animation: fadeOut ease 1s;
-  -o-animation: fadeOut ease 1s;
-  -ms-animation: fadeOut ease 1s; */
-  display: none;
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity:1;
+/* some basic styling for smaller screens */
+@media only screen and (max-width: 950px) {
+  .block h2 {
+    font-size: 30px;
+    display: none;
   }
-  100% {
-    opacity:0;
-  }
-}
 
-@-moz-keyframes fadeOut {
-  0% {
-    opacity:1;
+  .dropdown li {
+    display: block;
   }
-  100% {
-    opacity:0;
-  }
-}
 
-@-webkit-keyframes fadeOut {
-  0% {
-    opacity:1;
+  .title {
+    font-size: 30px;
   }
-  100% {
-    opacity:0;
-  }
-}
-
-@-o-keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
-@-ms-keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
 }
