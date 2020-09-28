@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+  <title> EXERCISE 1A TEMPLATE - CART 351 2020 </title>
+  <meta charset="UTF-8">
+  <style>
+    #c {
+      background-color: #3e181b;
+      border: 3px solid #db1d2d;
+    }
+
+    #d {
+      background-color: #422018;
+      border: 3px solid #f0421c;
+    }
+
+    #e {
+      background-color: #45391b;
+      border: 3px solid #fec02d;
+    }
+
+    body {
+      background: black;
+    }
+
+    .para {
+      color: white;
+      font-size: 22pt;
+      background: purple;
+      margin-left: 1%;
+      margin-top: 1%;
+      padding: 1%;
+    }
+
+    .box {
+      width: 10vw;
+      /*(1/10th) viewport width */
+      height: 10vw;
+      margin-left: 1%;
+      margin-top: 1%;
+      display: inline-block;
+    }
+
+    .wrapper {
+      margin-left: 30%;
+      margin-top: 15%;
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      // triggered when a box or paragraph is clicked
+      function handleClick(event) {
+        let identification = event.target.id; // identify which element was clicked based on its id
+        let boxClassName = event.target.className;
+
+        // if one of the boxes was clicked, identify it in a paragraph
+        if (boxClassName === 'box') {
+          let node = document.createTextNode(' This text is for box ' + identification);
+          para.style.display = 'inline-block'; // displaying the paragraph
+          para.style.width = '250px'; // change the text width so that each click makes a new line appear
+          para.appendChild(node);
+        }
+        // if paragraph is clicked, clear and it make it disappear
+        if (identification === 'displayText') {
+          para.innerHTML = ''; // clearing the current text in the paragraph if there is any
+          para.style.display = 'none'; // hide the text
+        }
+      }
+
+      // decrease box opacity (to 50%) when user puts mouse over
+      function decreaseOpacity(event) {
+        this.style.opacity = 0.5;
+      }
+
+      // increase box opacity (to 100%) when user brings mouse off
+      function increaseOpacity(event) {
+        this.style.opacity = 1.0;
+      }
+
+      // create click, mouseover, and mouseout event listeners for the three boxes
+      // using their class name to target them
+      let boxes = document.getElementsByClassName('box');
+      for(let i = 0; i < boxes.length; i++) {
+        boxes[i].addEventListener('click', handleClick);
+        boxes[i].addEventListener('mouseover', decreaseOpacity);
+        boxes[i].addEventListener('mouseout', increaseOpacity);
+      }
+
+      let para = document.getElementById('displayText');
+      para.addEventListener('click', handleClick);
+
+    } //on load
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div id="c" class="box"></div>
+    <div id="d" class="box"></div>
+    <div id="e" class="box"></div>
+    <br />
+    <p style="display:none;" id="displayText" class="para"></p>
+  </div>
+
+</body>
+
+</html>
