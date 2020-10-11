@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> EXERCISE 2 - CART 351 2020 </title>
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      let beveragesList = []; // creating an empty array to store beverage content
+      let dataFromJSON = null;
+
+      $("#getData").click(function(event) {
+        $.getJSON("beverages.json", function(data) {
+          dataFromJSON = data;
+          console.log(dataFromJSON);
+          for (let i = 0; i < dataFromJSON.length; i++) {
+            let beverage = dataFromJSON[i];
+
+          }
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <label>Type in your search criteria:</label>
+    <input type="text" id="searchText" value="search Item" />
+    <div id="resultDiv"></div>
+    <button id="getData" value="load data">Search</button>
+    <!-- <input type="search" id="search" value="search" /> -->
+  </div>
+
+</body>
+
+</html>

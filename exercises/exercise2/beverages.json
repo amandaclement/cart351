@@ -1,0 +1,38 @@
+[
+  {
+    "day": "1",
+    "type": "cappuccino",
+    "cups": "1",
+    "ingredient": "cinnamon",
+    "time": "8:15am",
+    "location": "kitchen",
+    "feeling": "relaxed"
+  },
+  {
+    "day": "2",
+    "beverage type": "regular coffee",
+    "number of cups": "2",
+    "added ingredient": "milk",
+    "time of day": "9:30am",
+    "drinking location": "basement",
+    "feeling after drinking": "tired"
+  },
+  {
+    "day": "3",
+    "beverage type": "espresso tea",
+    "number of cups": "2",
+    "added ingredient": "milk",
+    "time of day": "10:15am",
+    "drinking location": "basement",
+    "feeling after drinking": "tired"
+  },
+  {
+    "day": "4",
+    "beverage type": "regular coffee",
+    "number of cups": "2",
+    "added ingredient": "milk",
+    "time of day": "8:00am",
+    "drinking location": "bedroom",
+    "feeling after drinking": "stressed"
+  }
+]
