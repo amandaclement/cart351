@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> EXERCISE 2 - CART 351 2020 </title>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <style>
+    body {
+      font-family: 'Karla', sans-serif;
+      background-image: url("images/coffeeBg.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: #FFF;
+      overflow-x: hidden;
+    }
+    .container {
+      width: 100%;
+      text-align: center;
+      padding: 30px;
+    }
+
+    #receiptInfo {
+      margin: 40px auto;
+      border: 2px solid #000;
+      width: 40%;
+      padding: 5px 20px;
+      line-height: 30px;
+      display: none;
+      background-color: #FFF;
+      color: #000;
+    }
+
+    img {
+      padding: 0;
+      margin: 0;
+    }
+
+    #instructions {
+      color: #CCC;
+      font-size: 13px;
+    }
+  </style>
+
+  <script>
+  $(document).ready(function(){
+    let dataFromJSON = null;
+      $.getJSON('beverages.json', function(data) {
+        console.log(dataFromJSON); // log the JSON info
+
+        // variables for the beverage information
+        let type;
+        let cups;
+        let ingredient;
+        let size;
+
+        // variables for generating random prices
+        let price;
+        let tax;
+
+        let displayInfo = $("<div>"); // create a div to display JSON info
+        $(displayInfo).appendTo("#showData"); // append it to showData (HTML div)
+        let displayPrice = $("<div>"); // create a div to display price
+        $(displayPrice).css("font-weight","bold").css("padding-bottom","15px").appendTo("#showData"); // append it to showData (HTML div)
+
+        // when user clicks button...
+        $("#getData").click(function(event) {
+          let inputData = $("#searchText").val(); // get the user's search input
+          console.log("user typed: " + inputData); // log it
+
+          // correct user if they search number that isn't within scope
+          if (inputData > 4 || inputData < 0) {
+            alert("Invalid number. Please enter a number between 0 and 5.")
+          }
+
+          // parse through the JSON data (index and associated values)
+           $.each(data, function(index, value) {
+             if (parseInt(inputData) === (index + 1)) {
+               console.log(value.type); // test
+               console.log(index);
+
+               // putting the beverage info into their respective variables
+               let type = value.type;
+               let cups = value.cups;
+               let ingredient = value.ingredient;
+               let size = value.size;
+
+               $("#receiptInfo").show(); // display the receipt
+               // and display the appropriate info
+               displayInfo.html("Beverage: " + type + "<br>" + "Number of Cups: " + cups + "<br>" + "Added Ingredient(s): " + ingredient + "<br>" + "Size: " + size);
+
+               // generating a random price each time
+               let price = Math.floor(Math.random() * 10); // returns a random integer from 0 to 9
+               let tax = Math.floor(Math.random() * 100); // returns a different random integer from 0 to 99
+               displayPrice.html("Your total is $" + price + '.' + tax);
+             }
+          });
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <label>Type in your order number:</label>
+    <input type="text" id="searchText" name="searchText"/>
+    <p id="instructions"><i>Your order number must be between 0 and 5.</i></p>
+    <button id="getData" value="load data">Print Receipt</button>
+
+
+    <div id="receiptInfo">
+      <img src="images/coffeeLogo.png" alt="coffee logo" width="100" height="100">
+      <h1>Coffee Co.</h1>
+      <h2>Customer Receipt</h2>
+      <p>Cashier: <i>Amanda</i></p>
+      <p><b><i>Here are the details of your order:</i></b></p>
+      <div id="showData"></div>
+    </div>
+  </div>
+
+</body>
+
+</html>
